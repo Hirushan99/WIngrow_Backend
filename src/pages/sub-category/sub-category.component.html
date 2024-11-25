@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>Sub Categories</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sub Category ID</th>
+        <th>Sub Category Name</th>
+        <th>Main Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subCategory of subCategories$ | async">
+        <td>{{ subCategory.id }}</td>
+        <td>{{ subCategory.sub_category_name }}</td>
+        <td>{{ subCategory.main_category_name }}</td>
+        <td>
+          <button (click)="startEdit(subCategory)">Edit</button>
+          <button (click)="deleteSubCategory(subCategory.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form (ngSubmit)="isEditing ? editSubCategory() : createSubCategory()">
+    <label for="subCategoryId">Sub Category ID:</label>
+    <input
+      id="subCategoryId"
+      type="text"
+      [(ngModel)]="newSubCategory.id"
+      name="subCategoryId"
+      [readonly]="isEditing"
+      (input)="checkIfIdExists()"
+      required
+    />
+
+
+    <label for="subCategoryName">Sub Category Name:</label>
+    <input
+      id="subCategoryName"
+      type="text"
+      [(ngModel)]="newSubCategory.sub_category_name"
+      name="subCategoryName"
+      required
+    />
+
+    <label for="mainCategory">Main Category:</label>
+    <select
+      id="mainCategory"
+      [(ngModel)]="newSubCategory.main_category_name"
+      name="mainCategory"
+      required
+    >
+      <option *ngFor="let category of mainCategories$ | async" [value]="category.category_name">
+        {{ category.category_name }}
+      </option>
+    </select>
+
+
+    <button type="submit" [disabled]="idExists || !newSubCategory.id">
+      {{ isEditing ? 'Edit Sub Category' : 'Create Sub Category' }}
+    </button>
+
+    <p *ngIf="idExists && !isEditing" style="color: red;">Sub Category ID already exists!</p>
+  </form>
+</div>

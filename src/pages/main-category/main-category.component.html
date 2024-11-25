@@ -14,16 +14,13 @@
         <td>{{ category.id }}</td>
         <td>{{ category.category_name }}</td>
         <td>
-          <!-- Edit Button -->
           <button (click)="startEdit(category)">Edit</button>
-          <!-- Delete Button -->
           <button (click)="deleteCategory(category.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-    <!-- Add/Edit Category Form -->
     <form (ngSubmit)="isEditing ? editCategory() : createCategory()">
       <label for="categoryId">Category ID:</label>
       <input
