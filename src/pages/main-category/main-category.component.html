@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>Main Categories</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories$ | async">
+        <td>{{ category.id }}</td>
+        <td>{{ category.category_name }}</td>
+        <td>
+          <!-- Edit Button -->
+          <button (click)="startEdit(category)">Edit</button>
+          <!-- Delete Button -->
+          <button (click)="deleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- Add/Edit Category Form -->
+    <form (ngSubmit)="isEditing ? editCategory() : createCategory()">
+      <label for="categoryId">Category ID:</label>
+      <input
+        id="categoryId"
+        type="text"
+        [(ngModel)]="newCategory.id"
+        name="categoryId"
+        [readonly]="isEditing"
+        (input)="checkIdExists()"
+        required
+      />
+
+      <label for="categoryName">Category Name:</label>
+      <input
+        id="categoryName"
+        type="text"
+        [(ngModel)]="newCategory.category_name"
+        name="categoryName"
+        required
+      />
+
+      <button
+        type="submit"
+        [disabled]="idExists && !isEditing || !newCategory.id || !newCategory.category_name"
+      >
+        {{ isEditing ? 'Edit Category' : 'Create Category' }}
+      </button>
+    </form>
+
+    <p *ngIf="idExists && !isEditing" style="color: red;">Category ID already exists!</p>
+</div>
