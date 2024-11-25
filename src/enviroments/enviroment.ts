@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  firebase: {
+  firebaseConfig: {
     apiKey: "AIzaSyDbokrhjAeWEaeXfGTPc6SazyCuxqEjuvY",
     authDomain: "wingrow-sl.firebaseapp.com",
     projectId: "wingrow-sl",

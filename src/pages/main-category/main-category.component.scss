@@ -1,0 +1,85 @@
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  font-size: large;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:nth-child(1) {
+  background-color: rgb(21, 79, 196);
+  color: #fff;
+  margin-right: 20px;
+
+}
+
+button:nth-child(2) {
+  background-color: red;
+  color: #fff;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+
+button[type="submit"]:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+p{
+  text-align: center;
+}
